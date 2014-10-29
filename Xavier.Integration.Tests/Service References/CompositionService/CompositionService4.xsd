@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/W2P.Xavier.Composition" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/W2P.Xavier.Composition" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:17000/Services/CompositionService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="PreviewRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntryID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="VariableData" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreviewRequest" nillable="true" type="tns:PreviewRequest" />
+  <xs:complexType name="PreviewResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pages" type="xs:int" />
+      <xs:element minOccurs="0" name="resources" nillable="true" type="tns:PreviewResources" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreviewResponse" nillable="true" type="tns:PreviewResponse" />
+  <xs:complexType name="PreviewResources">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="page" nillable="true" type="tns:PreviewPage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreviewResources" nillable="true" type="tns:PreviewResources" />
+  <xs:complexType name="PreviewPage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreviewPage" nillable="true" type="tns:PreviewPage" />
+</xs:schema>

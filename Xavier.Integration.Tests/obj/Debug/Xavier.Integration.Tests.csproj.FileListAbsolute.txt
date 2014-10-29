@@ -1,0 +1,16 @@
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\Xavier.Integration.Tests.dll.config
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\Xavier.Integration.Tests.dll
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\Xavier.Integration.Tests.pdb
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\nunit.framework.dll
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\nunit.framework.xml
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\obj\Debug\Xavier.Integration.Tests.csprojResolveAssemblyReference.cache
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\obj\Debug\Xavier.Integration.Tests.dll
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\obj\Debug\Xavier.Integration.Tests.pdb
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\FluentAssertions.Core.dll
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\FluentAssertions.dll
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\FluentAssertions.pdb
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\FluentAssertions.xml
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\FluentAssertions.Core.pdb
+C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\FluentAssertions.Core.xml

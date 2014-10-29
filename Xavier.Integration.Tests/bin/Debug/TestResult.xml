@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\Xavier.Integration.Tests.dll" total="7" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-29" time="12:20:00">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5472" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="DKUROCHKIN" user="DKurochkin" user-domain="DOMAIN" />
+  <culture-info current-culture="ru-RU" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Xavier.Integration.Tests\Xavier.Integration.Tests\bin\Debug\Xavier.Integration.Tests.dll" executed="True" result="Success" success="True" time="24.472" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Xavier" executed="True" result="Success" success="True" time="24.472" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Integration" executed="True" result="Success" success="True" time="24.472" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="24.471" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="XavierIntegrationTests" executed="True" result="Success" success="True" time="24.470" asserts="0">
+                    <results>
+                      <test-case name="Xavier.Integration.Tests.XavierIntegrationTests.GetAndPurchaseVdpService" executed="True" result="Success" success="True" time="2.251" asserts="1">
+                        <categories>
+                          <category name="positive POST" />
+                        </categories>
+                      </test-case>
+                      <test-case name="Xavier.Integration.Tests.XavierIntegrationTests.GetAndPurchaseVdpServiceAtNegative" executed="True" result="Success" success="True" time="0.787" asserts="0">
+                        <categories>
+                          <category name="negative POST" />
+                        </categories>
+                        <reason>
+                          <message><![CDATA[]]></message>
+                        </reason>
+                      </test-case>
+                      <test-case name="Xavier.Integration.Tests.XavierIntegrationTests.PullAllShippingServices" executed="True" result="Success" success="True" time="6.087" asserts="30">
+                        <categories>
+                          <category name="positive GET" />
+                        </categories>
+                      </test-case>
+                      <test-case name="Xavier.Integration.Tests.XavierIntegrationTests.PullEdocClientServiceFor_BC_EDB_EN_US_Product" executed="True" result="Success" success="True" time="6.670" asserts="8" />
+                      <test-case name="Xavier.Integration.Tests.XavierIntegrationTests.PullEdocClientServiceFor_eDoc_Is_Out_Of_Stock_Product" executed="True" result="Success" success="True" time="2.723" asserts="3" />
+                      <test-case name="Xavier.Integration.Tests.XavierIntegrationTests.PullEdocClientServiceFor_No_Weight_eDoc" executed="True" result="Success" success="True" time="3.529" asserts="5" />
+                      <test-case name="Xavier.Integration.Tests.XavierIntegrationTests.SendRequestsToEdocClientService" executed="True" result="Success" success="True" time="2.392" asserts="6">
+                        <categories>
+                          <category name="positive GET" />
+                        </categories>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

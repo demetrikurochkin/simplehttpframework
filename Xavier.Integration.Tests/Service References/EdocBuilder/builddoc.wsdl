@@ -1,0 +1,1787 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.edocbuilder.com/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.edocbuilder.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.edocbuilder.com/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="startDocSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remote_tag" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="startDocSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDocSessionResult" type="tns:sessionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="sessionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="docName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isUnBranded" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="docSession" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="numPages" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="pages" type="tns:pageInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="dataMap" type="tns:dataMap" />
+          <s:element minOccurs="1" maxOccurs="1" name="templateLockDown" type="tns:TemplateLockDown" />
+          <s:element minOccurs="0" maxOccurs="1" name="sessionImages" type="tns:ArrayOfBackground" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultPalette" type="tns:PaletteInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="fullScreenWindow" type="tns:eRestriction" />
+          <s:element minOccurs="0" maxOccurs="1" name="remote_tag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="initialSize" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fotoliaEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="fotoliaAPIkey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fotoliaTabText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="facebookEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="facebookTabText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="instagramEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="instagramClientID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="instagramTabText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultTextColor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="pageInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="pageNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="backgroundOptions" type="tns:ArrayOfBackground" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowColorBackground" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowBlankBackground" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="backgroundPalette" type="tns:PaletteInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowNewFields" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="pageHeight" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="pageWidth" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="pageBleed" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="pageSafeZone" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBackground">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="background" nillable="true" type="tns:background" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="background">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="thumbNailURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="highResURL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PaletteInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PaletteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaletteName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="colors" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="dataMap">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="dataMapFields" type="tns:ArrayOfDataMapField" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDataMapField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="dataMapField" type="tns:dataMapField" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="dataMapField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="dataFileFieldName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="eDocFieldName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="eDocFieldIsRequired" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TemplateLockDown">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="canUseFormsFrontend" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canUseRIAFrontend" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canAddText" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canAddImages" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="eRestriction">
+        <s:restriction base="s:string">
+          <s:enumeration value="prohibited" />
+          <s:enumeration value="allowed" />
+          <s:enumeration value="required" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="startDocSessionNoPwd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="startDocSessionNoPwdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDocSessionNoPwdResult" type="tns:sessionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="continueSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSession" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="continueSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="continueSessionResult" type="tns:sessionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCurrentSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCurrentSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCurrentSessionResult" type="tns:docClientInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="docClientInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idFieldName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseSetPrompt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultImageQualityRange" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="defaultNewFieldLockdown" type="tns:fieldLockDown" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowPDFProofDownload" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowAutoPopulate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="fullScreenWindow" type="tns:eRestriction" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultFont" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fotoliaEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="fotoliaAPIkey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="palettes" type="tns:ArrayOfPaletteInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="inputForm" type="tns:ArrayOfFormElement" />
+          <s:element minOccurs="1" maxOccurs="1" name="responseSetsFrom" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseSets" type="tns:ArrayOfResponseSet" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultPalette" type="tns:PaletteInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="defaultPaletteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="preventRasterQuantization" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="fotoliaTabText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="facebookEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="facebookTabText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="instagramEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="instagramTabText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultTextColor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="fieldLockDown">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="initialized" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canMove" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canResize" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canChangeZorder" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canGoBehindBackground" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="minFieldSize" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="maxFieldSize" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="canRotate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canCrop" type="tns:cropType" />
+          <s:element minOccurs="1" maxOccurs="1" name="canChangeOpacity" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canChangeFont" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="minFontSize" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="maxFontSize" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="canChangeColor" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylize" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeBold" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeItalic" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeUnderline" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeDirection" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeLeading" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeTracking" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeFontsize" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canStylizeAlignment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="canInsertSymbol" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="defaultPalette" type="tns:PaletteInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="canChangeBorder" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="cropType">
+        <s:restriction base="s:string">
+          <s:enumeration value="none" />
+          <s:enumeration value="aspect" />
+          <s:enumeration value="any" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfPaletteInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PaletteInfo" nillable="true" type="tns:PaletteInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormElement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="formElement" type="tns:formElement" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="formElement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="elementPrompt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementDefault" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementSortOrder" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementToolTip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="formElementOption" type="tns:ArrayOfFormElementOption" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementMaxLength" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementIsOptional" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementPageNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementRect" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementForceFit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementForceFitMaxLines" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementTextStyleOverride" type="tns:TextElementOverride" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementAllowPositionOverride" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementReformatText" type="tns:enumTextReformat" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementReformatTextEveryTime" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementEntryBlockName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementEntryBlockInstructions" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementEntryBlockNewLine" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="profileType" type="tns:profileMap" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementProtected" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementLockDown" type="tns:fieldLockDown" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementQualityRanges" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="elementOpacity" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="imageFitType" type="tns:imageFitMethod" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowUploadFromAssets" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="initialAssetCategory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="palette" type="tns:PaletteInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="parent" type="tns:docClientInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="paletteID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormElementOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="formElementOption" type="tns:formElementOption" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="formElementOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="optionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="optionValue" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TextElementOverride">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SerializableObjectOfTextElementOverride">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="fontName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontSize" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="fontColor" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontBold" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontItalic" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontUnderline" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontLeading" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontAlignment" type="s:unsignedByte" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontTracking" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="fontDirection" type="tns:textDirection" />
+              <s:element minOccurs="0" maxOccurs="1" name="fieldPositionRect" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cropParms" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="fieldZOrder" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="fieldPageNumber" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="fieldControlType" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="fieldRotation" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="opacity" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="imageBorder" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="imageBorderWidth" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="imageBorderColor" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="backgroundColorSetting" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="backgroundColor" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="fotoliaID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SerializableObjectOfTextElementOverride" />
+      <s:simpleType name="textDirection">
+        <s:restriction base="s:string">
+          <s:enumeration value="lrtb" />
+          <s:enumeration value="rltb" />
+          <s:enumeration value="tblr" />
+          <s:enumeration value="tbrl" />
+          <s:enumeration value="lrbt" />
+          <s:enumeration value="rlbt" />
+          <s:enumeration value="btlr" />
+          <s:enumeration value="btrl" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="enumTextReformat">
+        <s:restriction base="s:string">
+          <s:enumeration value="none" />
+          <s:enumeration value="html" />
+          <s:enumeration value="upper" />
+          <s:enumeration value="lower" />
+          <s:enumeration value="simpleTitleCase" />
+          <s:enumeration value="englishIntelligent" />
+          <s:enumeration value="email" />
+          <s:enumeration value="web" />
+          <s:enumeration value="usTelParen" />
+          <s:enumeration value="usTelSpace" />
+          <s:enumeration value="usTelPeriod" />
+          <s:enumeration value="usTelPeriodWith1" />
+          <s:enumeration value="belgiumNational1" />
+          <s:enumeration value="belgiumNational2" />
+          <s:enumeration value="BelgiumGSM" />
+          <s:enumeration value="belgiumInternational1" />
+          <s:enumeration value="belgiumInternational2" />
+          <s:enumeration value="belgiumInternationalGSM" />
+          <s:enumeration value="belgiumVAT" />
+          <s:enumeration value="netherlandsNational1" />
+          <s:enumeration value="netherlandsNational2" />
+          <s:enumeration value="netherlandsInternational1" />
+          <s:enumeration value="netherlandsInternational2" />
+          <s:enumeration value="netherlandsInternational3" />
+          <s:enumeration value="netherlandsVAT" />
+          <s:enumeration value="usTelHyphen" />
+          <s:enumeration value="usTelSingleHyphen" />
+          <s:enumeration value="usTelSlashWithPeriod" />
+          <s:enumeration value="usTelHypenWith1" />
+          <s:enumeration value="englishIntelligentSuperscriptOrdinals" />
+          <s:enumeration value="custom" />
+          <s:enumeration value="customDigitsOnly" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="profileMap">
+        <s:restriction base="s:string">
+          <s:enumeration value="none" />
+          <s:enumeration value="firstName" />
+          <s:enumeration value="middleInitial" />
+          <s:enumeration value="lastName" />
+          <s:enumeration value="fullName" />
+          <s:enumeration value="jobTitle1" />
+          <s:enumeration value="jobTitle2" />
+          <s:enumeration value="companyName" />
+          <s:enumeration value="addressLine1" />
+          <s:enumeration value="addressLine2" />
+          <s:enumeration value="addressLine3" />
+          <s:enumeration value="city" />
+          <s:enumeration value="stateOrProvince" />
+          <s:enumeration value="postalCode" />
+          <s:enumeration value="email" />
+          <s:enumeration value="businessPhone" />
+          <s:enumeration value="homePhone" />
+          <s:enumeration value="mobilePhone" />
+          <s:enumeration value="cellPhone" />
+          <s:enumeration value="pager" />
+          <s:enumeration value="website" />
+          <s:enumeration value="departmentName" />
+          <s:enumeration value="faxPhone" />
+          <s:enumeration value="seqCount" />
+          <s:enumeration value="country" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="imageFitMethod">
+        <s:restriction base="s:string">
+          <s:enumeration value="stretch" />
+          <s:enumeration value="scale" />
+          <s:enumeration value="crop" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfResponseSet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="responseSet" nillable="true" type="tns:responseSet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="responseSet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseSetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseSetItems" type="tns:ArrayOfResponseSetItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResponseSetItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="responseSetItem" type="tns:responseSetItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="responseSetItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="exclude" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="fieldResponse" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getPreviews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pageNumber" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="pixelSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeThumbs" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPreviewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPreviewsResult" type="tns:ArrayOfDocPreviewPage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocPreviewPage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="docPreviewPage" type="tns:docPreviewPage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="docPreviewPage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="pageNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="thumbURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="largeURL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetfontList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="opt" type="tns:_fontlistOption" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="_fontlistOption">
+        <s:restriction base="s:string">
+          <s:enumeration value="names" />
+          <s:enumeration value="previews" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetfontListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetfontListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProofPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="allVDP" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProofPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProofPDFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPreviewsDPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pagenumber" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="DPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeThumbs" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPreviewsDPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPreviewsDPIResult" type="tns:ArrayOfDocPreviewPage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCurrentSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userValues" type="tns:ArrayOfUserEntries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserEntries">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="userEntries" type="tns:userEntries" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="userEntries">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="elementName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imageData" type="tns:ArrayOfUnsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="textStyle" type="tns:TextElementOverride" />
+          <s:element minOccurs="0" maxOccurs="1" name="elementReposition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lockdown" type="tns:fieldLockDown" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUnsignedByte">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="unsignedByte" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateCurrentSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateCurrentSessionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="approveDocSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="approveDocSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="approveDocSessionResult" type="tns:approveDocSessionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="approveDocSessionInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="approvalStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="sessionIdentifier" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="tagSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remote_tag" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tagSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tagSessionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="utcStartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="utcEndDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrdersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrdersResult" type="tns:ArrayOfOrderItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOrderItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="orderItem" type="tns:orderItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="orderItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sessionName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sessionUtcDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getOrderFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrderFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrderFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrderFileNoPwd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrderFileNoPwdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrderFileNoPwdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLibraryTemplatesResult" type="tns:ArrayOfLibraryTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLibraryTemplate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="libraryTemplate" type="tns:libraryTemplate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="libraryTemplate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="docName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="docDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="docID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="docPassword" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="docCategory" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="docPageCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="docWidth" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="docHeight" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="docBleed" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="clientType" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="fullScreenWindow" type="tns:eRestriction" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getLibraryTemplatesByCategory1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatesByCategory1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLibraryTemplatesByCategory1Result" type="tns:ArrayOfLibraryTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatesByCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatesByCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLibraryTemplatesByCategoryResult" type="tns:ArrayOfLibraryTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplateInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplateInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getLibraryTemplateInfoResult" type="tns:libraryTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatePreview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pagenum" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pixelsize" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="imgExt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="useAlpha" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatePreviewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLibraryTemplatePreviewResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatePreviewDPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pagenum" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="DPI" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="imgExt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="useAlpha" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryTemplatePreviewDPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLibraryTemplatePreviewDPIResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="reOpenSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="reOpenSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="reOpenSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="duplicateSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="duplicateSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="duplicateSessionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateVdpInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataFile" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataMap" type="tns:dataMap" />
+            <s:element minOccurs="1" maxOccurs="1" name="numVdpRecords" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateVdpInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateVdpInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVdpDataFileFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVdpDataFileFieldsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVdpDataFileFieldsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVdpDataFileInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVdpDataFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getVdpDataFileInfoResult" type="tns:vdpDataFileInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="vdpDataFileInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="numRecords" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="fileURL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="isSessionObsoleted">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isSessionObsoletedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isSessionObsoletedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLibraryCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLibraryCategoriesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="decideMediaToBuy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="decideMediaToBuyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="decideMediaToBuyResult" type="tns:ArrayOfMediaReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMediaReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="mediaReturn" nillable="true" type="tns:mediaReturn" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="mediaReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="license" type="tns:licensedata" />
+          <s:element minOccurs="0" maxOccurs="1" name="licensedetails" type="tns:LicenseDetails" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creator_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="creator_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="media_type_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="thumbnail_url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="thumbnail_width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="thumbnail_height" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="thumbnail_html_tag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="country_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="country_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="nb_views" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nb_downloads" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="keywords" type="tns:ArrayOfKeyword" />
+          <s:element minOccurs="0" maxOccurs="1" name="cat1" type="tns:categorydata" />
+          <s:element minOccurs="0" maxOccurs="1" name="cat2" type="tns:categorydata" />
+          <s:element minOccurs="0" maxOccurs="1" name="cat1_hierarchy" type="tns:ArrayOfCategorydata" />
+          <s:element minOccurs="0" maxOccurs="1" name="cat2_hierarchy" type="tns:ArrayOfCategorydata" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="licensedata">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="price" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LicenseDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="license_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ratio" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="height" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="dimensions" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dimensions_local" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phrase" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfKeyword">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Keyword" nillable="true" type="tns:Keyword" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Keyword">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="categorydata">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCategorydata">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="categorydata" nillable="true" type="tns:categorydata" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="startDocSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:startDocSession" />
+  </wsdl:message>
+  <wsdl:message name="startDocSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:startDocSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="startDocSessionNoPwdSoapIn">
+    <wsdl:part name="parameters" element="tns:startDocSessionNoPwd" />
+  </wsdl:message>
+  <wsdl:message name="startDocSessionNoPwdSoapOut">
+    <wsdl:part name="parameters" element="tns:startDocSessionNoPwdResponse" />
+  </wsdl:message>
+  <wsdl:message name="continueSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:continueSession" />
+  </wsdl:message>
+  <wsdl:message name="continueSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:continueSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCurrentSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:getCurrentSession" />
+  </wsdl:message>
+  <wsdl:message name="getCurrentSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:getCurrentSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPreviewsSoapIn">
+    <wsdl:part name="parameters" element="tns:getPreviews" />
+  </wsdl:message>
+  <wsdl:message name="getPreviewsSoapOut">
+    <wsdl:part name="parameters" element="tns:getPreviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetfontListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetfontList" />
+  </wsdl:message>
+  <wsdl:message name="GetfontListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetfontListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProofPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:getProofPDF" />
+  </wsdl:message>
+  <wsdl:message name="getProofPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:getProofPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPreviewsDPISoapIn">
+    <wsdl:part name="parameters" element="tns:getPreviewsDPI" />
+  </wsdl:message>
+  <wsdl:message name="getPreviewsDPISoapOut">
+    <wsdl:part name="parameters" element="tns:getPreviewsDPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateCurrentSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:updateCurrentSession" />
+  </wsdl:message>
+  <wsdl:message name="updateCurrentSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:updateCurrentSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="approveDocSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:approveDocSession" />
+  </wsdl:message>
+  <wsdl:message name="approveDocSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:approveDocSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="tagSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:tagSession" />
+  </wsdl:message>
+  <wsdl:message name="tagSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:tagSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrders" />
+  </wsdl:message>
+  <wsdl:message name="getOrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrderFileSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrderFile" />
+  </wsdl:message>
+  <wsdl:message name="getOrderFileSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrderFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrderFileNoPwdSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrderFileNoPwd" />
+  </wsdl:message>
+  <wsdl:message name="getOrderFileNoPwdSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrderFileNoPwdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplates" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatesByCategory1SoapIn">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatesByCategory1" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatesByCategory1SoapOut">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatesByCategory1Response" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatesByCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatesByCategory" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatesByCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatesByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplateInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplateInfo" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplateInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplateInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatePreviewSoapIn">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatePreview" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatePreviewSoapOut">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatePreviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatePreviewDPISoapIn">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatePreviewDPI" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryTemplatePreviewDPISoapOut">
+    <wsdl:part name="parameters" element="tns:getLibraryTemplatePreviewDPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="reOpenSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:reOpenSession" />
+  </wsdl:message>
+  <wsdl:message name="reOpenSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:reOpenSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="duplicateSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:duplicateSession" />
+  </wsdl:message>
+  <wsdl:message name="duplicateSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:duplicateSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateVdpInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:updateVdpInfo" />
+  </wsdl:message>
+  <wsdl:message name="updateVdpInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:updateVdpInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVdpDataFileFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:getVdpDataFileFields" />
+  </wsdl:message>
+  <wsdl:message name="getVdpDataFileFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:getVdpDataFileFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVdpDataFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getVdpDataFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="getVdpDataFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getVdpDataFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="isSessionObsoletedSoapIn">
+    <wsdl:part name="parameters" element="tns:isSessionObsoleted" />
+  </wsdl:message>
+  <wsdl:message name="isSessionObsoletedSoapOut">
+    <wsdl:part name="parameters" element="tns:isSessionObsoletedResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:getLibraryCategories" />
+  </wsdl:message>
+  <wsdl:message name="getLibraryCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:getLibraryCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="decideMediaToBuySoapIn">
+    <wsdl:part name="parameters" element="tns:decideMediaToBuy" />
+  </wsdl:message>
+  <wsdl:message name="decideMediaToBuySoapOut">
+    <wsdl:part name="parameters" element="tns:decideMediaToBuyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="buildDocSoap">
+    <wsdl:operation name="startDocSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Start a new eDoc session</wsdl:documentation>
+      <wsdl:input message="tns:startDocSessionSoapIn" />
+      <wsdl:output message="tns:startDocSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="startDocSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Start a new eDoc session</wsdl:documentation>
+      <wsdl:input name="startDocSessionNoPwd" message="tns:startDocSessionNoPwdSoapIn" />
+      <wsdl:output name="startDocSessionNoPwd" message="tns:startDocSessionNoPwdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="continueSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Resume using an existing open session</wsdl:documentation>
+      <wsdl:input message="tns:continueSessionSoapIn" />
+      <wsdl:output message="tns:continueSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve the info the client will need about the current session.</wsdl:documentation>
+      <wsdl:input message="tns:getCurrentSessionSoapIn" />
+      <wsdl:output message="tns:getCurrentSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPreviews">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get preview(s) for the document using current values.</wsdl:documentation>
+      <wsdl:input message="tns:getPreviewsSoapIn" />
+      <wsdl:output message="tns:getPreviewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetfontList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get font list</wsdl:documentation>
+      <wsdl:input message="tns:GetfontListSoapIn" />
+      <wsdl:output message="tns:GetfontListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofPDF">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get proof pdf for the document.</wsdl:documentation>
+      <wsdl:input message="tns:getProofPDFSoapIn" />
+      <wsdl:output message="tns:getProofPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPreviewsDPI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get preview(s) for the document using current values; specify DPI instead of pixel size</wsdl:documentation>
+      <wsdl:input message="tns:getPreviewsDPISoapIn" />
+      <wsdl:output message="tns:getPreviewsDPISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateCurrentSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update the session info with new values submitted by the user.</wsdl:documentation>
+      <wsdl:input message="tns:updateCurrentSessionSoapIn" />
+      <wsdl:output message="tns:updateCurrentSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="approveDocSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">marks the document as approved, so the production files can be generated</wsdl:documentation>
+      <wsdl:input message="tns:approveDocSessionSoapIn" />
+      <wsdl:output message="tns:approveDocSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="tagSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">assigns a remote tag to a session</wsdl:documentation>
+      <wsdl:input message="tns:tagSessionSoapIn" />
+      <wsdl:output message="tns:tagSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a list of orders</wsdl:documentation>
+      <wsdl:input message="tns:getOrdersSoapIn" />
+      <wsdl:output message="tns:getOrdersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the final product pdf for a document.</wsdl:documentation>
+      <wsdl:input message="tns:getOrderFileSoapIn" />
+      <wsdl:output message="tns:getOrderFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the final product pdf for a document.</wsdl:documentation>
+      <wsdl:input name="getOrderFileNoPwd" message="tns:getOrderFileNoPwdSoapIn" />
+      <wsdl:output name="getOrderFileNoPwd" message="tns:getOrderFileNoPwdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the list of templates associated with a company.</wsdl:documentation>
+      <wsdl:input message="tns:getLibraryTemplatesSoapIn" />
+      <wsdl:output message="tns:getLibraryTemplatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the list of templates associated with a company, filtered by category</wsdl:documentation>
+      <wsdl:input name="getLibraryTemplatesByCategory1" message="tns:getLibraryTemplatesByCategory1SoapIn" />
+      <wsdl:output name="getLibraryTemplatesByCategory1" message="tns:getLibraryTemplatesByCategory1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatesByCategory">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the list of templates associated with a company, filtered by category</wsdl:documentation>
+      <wsdl:input message="tns:getLibraryTemplatesByCategorySoapIn" />
+      <wsdl:output message="tns:getLibraryTemplatesByCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplateInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the template info for a single template identified by code and pwd</wsdl:documentation>
+      <wsdl:input message="tns:getLibraryTemplateInfoSoapIn" />
+      <wsdl:output message="tns:getLibraryTemplateInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatePreview">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a preview for a template (without starting a session)</wsdl:documentation>
+      <wsdl:input message="tns:getLibraryTemplatePreviewSoapIn" />
+      <wsdl:output message="tns:getLibraryTemplatePreviewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatePreviewDPI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a preview for a template (without starting a session)</wsdl:documentation>
+      <wsdl:input message="tns:getLibraryTemplatePreviewDPISoapIn" />
+      <wsdl:output message="tns:getLibraryTemplatePreviewDPISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="reOpenSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reopen a previously closed session.</wsdl:documentation>
+      <wsdl:input message="tns:reOpenSessionSoapIn" />
+      <wsdl:output message="tns:reOpenSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="duplicateSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Duplicate a previous session.</wsdl:documentation>
+      <wsdl:input message="tns:duplicateSessionSoapIn" />
+      <wsdl:output message="tns:duplicateSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateVdpInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update the VDP info in the session with the user provided data file and map.</wsdl:documentation>
+      <wsdl:input message="tns:updateVdpInfoSoapIn" />
+      <wsdl:output message="tns:updateVdpInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVdpDataFileFields">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return the field names from the data file in use.</wsdl:documentation>
+      <wsdl:input message="tns:getVdpDataFileFieldsSoapIn" />
+      <wsdl:output message="tns:getVdpDataFileFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVdpDataFileInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return the number of records from, and a download link to the data file in use.</wsdl:documentation>
+      <wsdl:input message="tns:getVdpDataFileInfoSoapIn" />
+      <wsdl:output message="tns:getVdpDataFileInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isSessionObsoleted">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Compare the session last modified date with the last modified date of the base template.</wsdl:documentation>
+      <wsdl:input message="tns:isSessionObsoletedSoapIn" />
+      <wsdl:output message="tns:isSessionObsoletedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryCategories">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets a list of categories available to the given account</wsdl:documentation>
+      <wsdl:input message="tns:getLibraryCategoriesSoapIn" />
+      <wsdl:output message="tns:getLibraryCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="decideMediaToBuy">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Decide which media to buy</wsdl:documentation>
+      <wsdl:input message="tns:decideMediaToBuySoapIn" />
+      <wsdl:output message="tns:decideMediaToBuySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="buildDocSoap" type="tns:buildDocSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="startDocSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/startDocSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startDocSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/startDocSessionNoPwd" style="document" />
+      <wsdl:input name="startDocSessionNoPwd">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="startDocSessionNoPwd">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="continueSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/continueSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/getCurrentSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreviews">
+      <soap:operation soapAction="http://www.edocbuilder.com/getPreviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetfontList">
+      <soap:operation soapAction="http://www.edocbuilder.com/GetfontList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofPDF">
+      <soap:operation soapAction="http://www.edocbuilder.com/getProofPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreviewsDPI">
+      <soap:operation soapAction="http://www.edocbuilder.com/getPreviewsDPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCurrentSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/updateCurrentSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="approveDocSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/approveDocSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tagSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/tagSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <soap:operation soapAction="http://www.edocbuilder.com/getOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderFile">
+      <soap:operation soapAction="http://www.edocbuilder.com/getOrderFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderFile">
+      <soap:operation soapAction="http://www.edocbuilder.com/getOrderFileNoPwd" style="document" />
+      <wsdl:input name="getOrderFileNoPwd">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOrderFileNoPwd">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplates">
+      <soap:operation soapAction="http://www.edocbuilder.com/getLibraryTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplates">
+      <soap:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatesByCategory1" style="document" />
+      <wsdl:input name="getLibraryTemplatesByCategory1">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getLibraryTemplatesByCategory1">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatesByCategory">
+      <soap:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatesByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplateInfo">
+      <soap:operation soapAction="http://www.edocbuilder.com/getLibraryTemplateInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatePreview">
+      <soap:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatePreview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatePreviewDPI">
+      <soap:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatePreviewDPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reOpenSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/reOpenSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="duplicateSession">
+      <soap:operation soapAction="http://www.edocbuilder.com/duplicateSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVdpInfo">
+      <soap:operation soapAction="http://www.edocbuilder.com/updateVdpInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVdpDataFileFields">
+      <soap:operation soapAction="http://www.edocbuilder.com/getVdpDataFileFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVdpDataFileInfo">
+      <soap:operation soapAction="http://www.edocbuilder.com/getVdpDataFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isSessionObsoleted">
+      <soap:operation soapAction="http://www.edocbuilder.com/isSessionObsoleted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryCategories">
+      <soap:operation soapAction="http://www.edocbuilder.com/getLibraryCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="decideMediaToBuy">
+      <soap:operation soapAction="http://www.edocbuilder.com/decideMediaToBuy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="buildDocSoap12" type="tns:buildDocSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="startDocSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/startDocSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startDocSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/startDocSessionNoPwd" style="document" />
+      <wsdl:input name="startDocSessionNoPwd">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="startDocSessionNoPwd">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="continueSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/continueSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getCurrentSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreviews">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getPreviews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetfontList">
+      <soap12:operation soapAction="http://www.edocbuilder.com/GetfontList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofPDF">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getProofPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreviewsDPI">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getPreviewsDPI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCurrentSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/updateCurrentSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="approveDocSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/approveDocSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tagSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/tagSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderFile">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getOrderFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderFile">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getOrderFileNoPwd" style="document" />
+      <wsdl:input name="getOrderFileNoPwd">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOrderFileNoPwd">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplates">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getLibraryTemplates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplates">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatesByCategory1" style="document" />
+      <wsdl:input name="getLibraryTemplatesByCategory1">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getLibraryTemplatesByCategory1">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatesByCategory">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatesByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplateInfo">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getLibraryTemplateInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatePreview">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatePreview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryTemplatePreviewDPI">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getLibraryTemplatePreviewDPI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reOpenSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/reOpenSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="duplicateSession">
+      <soap12:operation soapAction="http://www.edocbuilder.com/duplicateSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVdpInfo">
+      <soap12:operation soapAction="http://www.edocbuilder.com/updateVdpInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVdpDataFileFields">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getVdpDataFileFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVdpDataFileInfo">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getVdpDataFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isSessionObsoleted">
+      <soap12:operation soapAction="http://www.edocbuilder.com/isSessionObsoleted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLibraryCategories">
+      <soap12:operation soapAction="http://www.edocbuilder.com/getLibraryCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="decideMediaToBuy">
+      <soap12:operation soapAction="http://www.edocbuilder.com/decideMediaToBuy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="buildDoc">
+    <wsdl:port name="buildDocSoap" binding="tns:buildDocSoap">
+      <soap:address location="http://engine.edocbuilder.com/services/builddoc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="buildDocSoap12" binding="tns:buildDocSoap12">
+      <soap12:address location="http://engine.edocbuilder.com/services/builddoc.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

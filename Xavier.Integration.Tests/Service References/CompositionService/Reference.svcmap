@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="559368ea-d3d6-4f57-add3-f9c5a8d29e8c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:17000/Services/CompositionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CompositionService.xsd" MetadataType="Schema" ID="c8c652e1-f987-4e5e-84e6-39c5893cb23b" SourceId="1" SourceUrl="http://localhost:17000/Services/CompositionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CompositionService.wsdl" MetadataType="Wsdl" ID="e3605bbe-29ce-4f39-9fdf-894dbc2edcab" SourceId="1" SourceUrl="http://localhost:17000/Services/CompositionService.svc?wsdl" />
+    <MetadataFile FileName="CompositionService1.xsd" MetadataType="Schema" ID="4ed77fcd-b725-4a34-9d0d-a22686209041" SourceId="1" SourceUrl="http://localhost:17000/Services/CompositionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CompositionService2.xsd" MetadataType="Schema" ID="529f8683-af97-46c1-ba7c-bc49c4f8c2c6" SourceId="1" SourceUrl="http://localhost:17000/Services/CompositionService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CompositionService3.xsd" MetadataType="Schema" ID="385dba5a-5240-4420-b92d-736bb04190e2" SourceId="1" SourceUrl="http://localhost:17000/Services/CompositionService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CompositionService4.xsd" MetadataType="Schema" ID="2102f131-f7b4-4f97-a178-476951c0d4e2" SourceId="1" SourceUrl="http://localhost:17000/Services/CompositionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CompositionService.disco" MetadataType="Disco" ID="f13c7901-4b62-4de9-b67c-63e72d7bcd02" SourceId="1" SourceUrl="http://localhost:17000/Services/CompositionService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
